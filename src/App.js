@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import Todos from "./components/Todos";
+import Header from './components/Header';
+import AddTodoItem from './components/AddTodoItem';
+import './App.css';
+import uniqueid from 'uniqid'
 
 class App extends Component {
   state = {
@@ -45,14 +49,33 @@ class App extends Component {
     )
   }
 
+  addToDo=(title) =>
+  {
+    const newToDo = {
+      id:uniqueid() ,
+      title:title,
+      completed: false
+    } 
+     this.setState(
+       {
+        todos: [...this.state.todos,newToDo]
+       }
+     )
+  }
+
   render() {
     return (
       <div>
-        <Todos 
-          todos={this.state.todos} 
-           markComplete={this.markComplete}
-           delTodo ={this.delTodo}
-           />
+        <div className="container">
+          <Header />
+          <AddTodoItem addToDo={this.addToDo}/>
+          <Todos
+            todos={this.state.todos}
+            markComplete={this.markComplete}
+            delTodo={this.delTodo}
+            
+          />
+        </div>
       </div>
     );
   }
