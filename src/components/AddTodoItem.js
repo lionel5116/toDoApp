@@ -24,7 +24,7 @@ export class AddTodoItem extends Component {
              type="text" 
              name="title"
              style={{flex:'10',padding: '5px'}}
-             placeholder="Add todo Item ..."
+             placeholder="Add todo Item .."
              value={this.state.title}
              onChange={this.onChange}
              />
